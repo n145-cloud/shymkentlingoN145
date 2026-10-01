@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Шымкентлинго — №145 мектеп</title>
+    <!-- Tailwind CSS & FontAwesome -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <style>
+        * { font-family: 'Plus Jakarta Sans', sans-serif; }
+        
+        body { 
+            background-color: #05070e; 
+            color: #ffffff; 
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* 🌌 ҒАРЫШТЫҚ БРАВЛ СТАРС ФОНЫ (BRAWL STARS STYLE BACKGROUND) */
+        .brawl-bg-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -1;
+            overflow: hidden;
+            background: radial-gradient(circle at center, #111a2e 0%, #05070e 100%);
+        }
+
+        /* Қабат 1: Диагональ бойымен қалқып өтетін №145 логотиптер торы */
+        .floating-logos-layer {
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="160" height="160" viewBox="0 0 160 160"><g opacity="0.15"><rect x="30" y="30" width="100" height="100" rx="20" fill="none" stroke="%2310b981" stroke-width="3"/><text x="80" y="75" text-anchor="middle" fill="%2310b981" font-family="sans-serif" font-weight="900" font-size="22">№145</text><text x="80" y="98" text-anchor="middle" fill="%2310b981" font-family="sans-serif" font-weight="700" font-size="12">ШЫМКЕНТ</text></g></svg>');
+            background-repeat: repeat;
+            transform: rotate(-15deg);
+            animation: brawlStarsDrift 20s linear infinite;
+        }
+
+        /* Қабат 2: Жылдам өтетін ұсақ жұлдызшалар/бөлшектер */
+        .floating-particles-layer {
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 120 120"><circle cx="20" cy="20" r="2" fill="%233b82f6" opacity="0.3"/><circle cx="80" cy="90" r="3" fill="%2310b981" opacity="0.25"/><polygon points="60,10 63,18 71,18 64,23 67,31 60,26 53,31 56,23 49,18 57,18" fill="%23fbbf24" opacity="0.2"/></svg>');
+            background-repeat: repeat;
+            transform: rotate(-15deg);
+            animation: brawlStarsDriftFast 12s linear infinite;
+        }
+
+        /* Бравл Старс сияқты қалқу анимациясы */
+        @keyframes brawlStarsDrift {
+            0% { transform: rotate(-15deg) translateY(0); }
+            100% { transform: rotate(-15deg) translateY(-160px); }
+        }
+
+        @keyframes brawlStarsDriftFast {
+            0% { transform: rotate(-15deg) translateY(0); }
+            100% { transform: rotate(-15deg) translateY(-240px); }
+        }
+
+        /* НЕГІЗГІ КАРТОЧКА СТИЛЬДЕРІ */
+        .main-card {
+            background: rgba(17, 24, 39, 0.85);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.8), 0 0 30px rgba(16, 185, 129, 0.1);
+        }
+
+        .btn-green {
+            background-color: #10b981;
+            box-shadow: 0 5px 0 #047857;
+        }
+        .btn-green:active {
+            transform: translateY(3px);
+            box-shadow: 0 2px 0 #047857;
+        }
+
+        .mic-active {
+            animation: pulse-ring 1.5s infinite;
+            background-color: #ef4444 !important;
+            box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7) !important;
+        }
+        @keyframes pulse-ring {
+            70% { box-shadow: 0 0 0 20px rgba(239, 68, 68, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0); }
+        }
+    </style>
+</head>
+
+<body class="min-h-screen flex flex-col justify-between items-center p-3 md:p-6">
+
+    <!-- 🌌 БРАВЛ СТАРС ФОНЫ -->
+    <div class="brawl-bg-container">
+        <div class="floating-logos-layer"></div>
+        <div class="floating-particles-layer"></div>
+    </div>
+
+    <!-- ЖОҒАРҒЫ ПАНЕЛЬ -->
+    <header class="w-full max-w-xl main-card rounded-2xl p-4 flex justify-between items-center mb-4 relative z-10">
+        <div>
+            <h1 class="text-xl font-black text-emerald-400 tracking-wide flex items-center gap-2">
+                <i class="fa-solid fa-graduation-cap"></i> ШЫМКЕНТЛИНГО
+            </h1>
+            <p class="text-[11px] text-slate-400 font-bold mt-0.5">№145 мектеп • Автор: Исабек Нұрасыл</p>
+        </div>
+        
+        <div class="flex items-center gap-3">
+            <div class="flex items-center gap-1.5 bg-slate-900/90 px-3 py-1.5 rounded-xl border border-slate-700">
+                <i class="fa-solid fa-fire text-amber-500"></i>
+                <span id="streak" class="font-black text-amber-500 text-sm">1</span>
+            </div>
+            <div class="flex items-center gap-1.5 bg-slate-900/90 px-3 py-1.5 rounded-xl border border-slate-700">
+                <i class="fa-solid fa-bolt text-yellow-400"></i>
+                <span id="xp" class="font-black text-yellow-400 text-sm">0</span>
+                <span class="text-[10px] text-slate-400 font-bold">XP</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- НЕГІЗГІ ОҚУ БЛОГЫ -->
+    <main class="w-full max-w-xl main-card rounded-3xl p-5 md:p-7 flex-grow flex flex-col justify-between relative z-10">
+        <div>
+            <div class="flex justify-between items-center mb-2">
+                <span id="progress-text" class="text-xs font-bold text-emerald-400">Сөйлем: 1 / 900</span>
+                <span class="text-[11px] font-bold text-slate-400">ИИ ДАУЫС АНАЛИЗАТОРЫ</span>
+            </div>
+            <div class="w-full bg-slate-800/80 h-2.5 rounded-full overflow-hidden mb-6 border border-slate-700">
+                <div id="progress-bar" class="bg-emerald-500 h-full w-[1%] transition-all duration-300"></div>
+            </div>
+
+            <h2 class="text-base md:text-lg font-bold text-slate-200 mb-3">
+                Ағылшынша сөйлемді толық және анық қайталаңыз:
+            </h2>
+
+            <div class="bg-slate-900/90 border border-slate-700/80 rounded-2xl p-5 flex justify-between items-center gap-4 shadow-inner">
+                <div>
+                    <p id="target-phrase" class="text-xl md:text-2xl font-black text-white tracking-wide">
+                        School number 145 is the best!
+                    </p>
+                    <p id="target-translation" class="text-sm font-bold text-slate-400 mt-1">
+                        №145 мектеп — ең үздігі!
+                    </p>
+                </div>
+                <button onclick="speakText(currentPhrase.en)" class="w-12 h-12 bg-emerald-500 text-slate-950 rounded-xl flex items-center justify-center text-xl font-bold shrink-0 hover:bg-emerald-400 transition shadow-lg">
+                    <i class="fa-solid fa-volume-high"></i>
+                </button>
+            </div>
+        </div>
+
+        <div class="my-6 flex flex-col items-center">
+            <button id="mic-btn" onclick="handleMicClick()" class="w-24 h-24 btn-green rounded-full flex items-center justify-center text-3xl font-bold transition duration-200 shadow-xl">
+                <i id="mic-icon" class="fa-solid fa-microphone text-slate-950"></i>
+            </button>
+            <p id="status-text" class="text-xs font-bold text-slate-400 mt-4 text-center">
+                Батырманы басып, сөйлемді айтыңыз
+            </p>
+
+            <div id="result-box" class="mt-3 px-4 py-2 bg-slate-900 rounded-xl border border-slate-800 text-center hidden w-full">
+                <span class="text-[10px] text-slate-500 font-bold block">ИИ естіген сөздер:</span>
+                <p id="user-speech" class="text-sm font-bold text-emerald-400">...</p>
+            </div>
+        </div>
+
+        <div id="feedback-card" class="p-4 rounded-2xl hidden border transition">
+            <div class="flex items-start gap-3">
+                <div id="feedback-icon-bg" class="w-8 h-8 rounded-lg flex items-center justify-center shrink-0 mt-0.5">
+                    <i id="feedback-icon" class="text-base"></i>
+                </div>
+                <div>
+                    <h3 id="feedback-title" class="font-extrabold text-base"></h3>
+                    <p id="feedback-tip" class="text-xs mt-1 leading-relaxed font-medium"></p>
+                </div>
+            </div>
+            <button id="next-btn" onclick="nextPhrase()" class="w-full mt-3 py-3 bg-emerald-500 text-slate-950 font-black rounded-xl hidden hover:bg-emerald-400 transition">
+                КЕЛЕСІ ТАПСЫРМА ➔
+            </button>
+        </div>
+    </main>
+
+    <script>
+        const baseWords = [
+            {en: "student", kk: "оқушы"}, {en: "teacher", kk: "мұғалім"}, {en: "city", kk: "қала"}, 
+            {en: "book", kk: "кітап"}, {en: "future", kk: "болашақ"}, {en: "friend", kk: "дос"}
+        ];
+        
+        let database = [
+            { en: "School number 145 is the best!", kk: "№145 мектеп — ең үздігі!", tip: "'145' санын 'one hundred forty five' деп айт." }
+        ];
+
+        for (let i = 1; i < 900; i++) {
+            let w = baseWords[i % baseWords.length];
+            database.push({
+                en: `I am a good ${w.en}.`,
+                kk: `Мен жақсы ${w.kk} боламын.`,
+                tip: `'${w.en}' сөзін анық дыбыста.`
+            });
+        }
+
+        let currentIndex = 0;
+        let currentPhrase = database[0];
+        let xp = 0;
+
+        let recognition = null;
+        let isListening = false;
+
+        function handleMicClick() {
+            const SpeechContract = window.SpeechRecognition || window.webkitSpeechRecognition;
+            if (!SpeechContract) {
+                alert("Chrome немесе Edge браузерін қолданыңыз!");
+                return;
+            }
+
+            if (isListening) {
+                if (recognition) recognition.stop();
+                return;
+            }
+
+            recognition = new SpeechContract();
+            recognition.lang = 'en-US';
+            recognition.continuous = false;
+
+            recognition.onstart = () => {
+                isListening = true;
+                document.getElementById('mic-btn').classList.add('mic-active');
+                document.getElementById('status-text').innerText = "ИИ тыңдап тұр... Сөйлеңіз!";
+            };
+
+            recognition.onresult = (event) => {
+                let userText = event.results[0][0].transcript;
+                document.getElementById('user-speech').innerText = `"${userText}"`;
+                document.getElementById('result-box').classList.remove('hidden');
+                checkAnswer(userText);
+            };
+
+            recognition.onerror = () => {
+                document.getElementById('status-text').innerText = "Қайтадан басып, сөйлеңіз...";
+                stopMicUI();
+            };
+
+            recognition.onend = () => {
+                stopMicUI();
+            };
+
+            recognition.start();
+        }
+
+        function stopMicUI() {
+            isListening = false;
+            document.getElementById('mic-btn').classList.remove('mic-active');
+            document.getElementById('status-text').innerText = "Микрофонды басып, сөйлемді айтыңыз";
+        }
+
+        function speakText(text) {
+            window.speechSynthesis.cancel();
+            let msg = new SpeechSynthesisUtterance(text);
+            msg.lang = 'en-US';
+            msg.rate = 0.85;
+            window.speechSynthesis.speak(msg);
+        }
+
+        function clean(str) {
+            return str.toLowerCase().replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g, "").trim();
+        }
+
+        function checkAnswer(userSpeech) {
+            let targetWords = clean(currentPhrase.en).split(" ");
+            let userWords = clean(userSpeech).split(" ");
+
+            let card = document.getElementById('feedback-card');
+            let iconBg = document.getElementById('feedback-icon-bg');
+            let icon = document.getElementById('feedback-icon');
+            let title = document.getElementById('feedback-title');
+            let tip = document.getElementById('feedback-tip');
+            let nextBtn = document.getElementById('next-btn');
+
+            card.classList.remove('hidden', 'bg-emerald-950/80', 'border-emerald-500', 'bg-rose-950/80', 'border-rose-500');
+            nextBtn.classList.add('hidden');
+
+            let isCorrect = targetWords.every(word => userWords.includes(word));
+
+            if (isCorrect) {
+                xp += 15;
+                document.getElementById('xp').innerText = xp;
+
+                card.classList.add('bg-emerald-950/80', 'border-emerald-500');
+                iconBg.className = "w-8 h-8 rounded-lg bg-emerald-500/20 text-emerald-400 flex items-center justify-center shrink-0";
+                icon.className = "fa-solid fa-check";
+                title.innerText = "Өте тамаша! (+15 XP)";
+                title.className = "font-extrabold text-base text-emerald-400";
+                tip.innerText = "Сөйлем толық әрі өте анық айтылды!";
+                tip.className = "text-xs mt-1 text-emerald-200";
+
+                nextBtn.classList.remove('hidden');
+            } else {
+                card.classList.add('bg-rose-950/80', 'border-rose-500');
+                iconBg.className = "w-8 h-8 rounded-lg bg-rose-500/20 text-rose-400 flex items-center justify-center shrink-0";
+                icon.className = "fa-solid fa-xmark";
+                title.innerText = "Толық сөйлем айтылмады";
+                title.className = "font-extrabold text-base text-rose-400";
+                
+                tip.innerText = `ИИ кеңесі: Сөйлемді қалдырмай қайтала. ${currentPhrase.tip}`;
+                tip.className = "text-xs mt-1 text-rose-200";
+
+                speakText(`Listen and repeat: ${currentPhrase.en}`);
+            }
+        }
+
+        function nextPhrase() {
+            currentIndex = (currentIndex + 1) % database.length;
+            currentPhrase = database[currentIndex];
+
+            document.getElementById('target-phrase').innerText = currentPhrase.en;
+            document.getElementById('target-translation').innerText = currentPhrase.kk;
+            document.getElementById('progress-text').innerText = `Сөйлем: ${currentIndex + 1} / 900`;
+            
+            let percent = Math.min(100, ((currentIndex + 1) / 900) * 100);
+            document.getElementById('progress-bar').style.width = percent + "%";
+
+            document.getElementById('result-box').classList.add('hidden');
+            document.getElementById('feedback-card').classList.add('hidden');
+            stopMicUI();
+        }
+    </script>
+</body>
+</html>
